@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luminous Web Studio | Web制作・マーケティング支援</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --text-color: #333;
+            --bg-color: #f8f9fa;
+        }
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+        }
+        header {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+            letter-spacing: 2px;
+        }
+        header p {
+            margin-top: 0.5rem;
+            font-weight: 300;
+        }
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .services {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .service-card {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            flex: 1;
+        }
+        .service-card h3 {
+            color: var(--secondary-color);
+            margin-top: 0;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 0.5rem;
+        }
+        footer {
+            background-color: var(--primary-color);
+            color: #ecf0f1;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+        .footer-content {
+            max-width: 960px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .footer-info p {
+            margin: 0.3rem 0;
+            font-size: 0.95rem;
+        }
+        .footer-links {
+            margin-top: 1.5rem;
+        }
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+            margin-right: 1.5rem;
+            font-size: 0.9rem;
+        }
+        .footer-links a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            .services {
+                flex-direction: column;
+            }
+            .footer-content {
+                flex-direction: column;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Luminous Web Studio</h1>
+        <p>ビジネスの課題をデジタルで解決するパートナー</p>
+    </header>
+
+    <div class="container">
+        <section>
+            <h2 style="text-align: center; margin-bottom: 2rem;">事業内容</h2>
+            <div class="services">
+                <div class="service-card">
+                    <h3>Webサイト制作</h3>
+                    <p>コーポレートサイト、ランディングページ（LP）、オウンドメディアなど、目的に合わせた成果の出るWebサイトを設計・開発いたします。レスポンシブ対応・内部SEO最適化も標準装備です。</p>
+                </div>
+                <div class="service-card">
+                    <h3>デジタルマーケティング支援</h3>
+                    <p>Web広告（Google/Yahoo!/SNS）の運用代行や、SEO対策、コンテンツマーケティングを通じて、貴社の見込み客獲得（リードジェネレーション）を強力にサポートいたします。</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-info">
+                <h3 style="margin-top: 0; margin-bottom: 1rem;">Luminous Web Studio</h3>
+                <p>代表：高橋 遼平</p>
+                <p>所在地：〒150-0002 東京都渋谷区渋谷2-14-13 アーバン渋谷 402号室</p>
+                <p>電話番号：090-2738-4489</p>
+                <p>Email：G4477663355@gmail.com</p>
+            </div>
+            <div class="footer-links">
+                <a href="privacy.html">プライバシーポリシー</a>
+                <a href="law.html">特定商取引法に基づく表記</a>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 2rem; font-size: 0.8rem; color: #7f8c8d;">
+            &copy; 2026 Luminous Web Studio. All Rights Reserved.
+        </div>
+    </footer>
+
+</body>
+</html>
