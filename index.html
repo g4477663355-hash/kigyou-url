@@ -1,144 +1,960 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luminous Web Studio | Web制作・マーケティング支援</title>
+    <title>プレゼント企画 | 実績LP・入金方法のご案内</title>
+    <meta name="description" content="実績LPの確認と入金方法の説明を公式LINEでご案内するページです。">
+    <meta name="theme-color" content="#10233f">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="実績案内">
+    <meta property="og:title" content="プレゼント企画">
+    <meta property="og:description" content="実績アナウンスを確認し、入金方法の説明を公式LINEでご確認いただけます。">
+    <meta name="application-name" content="実績案内">
+    <meta name="apple-mobile-web-app-title" content="実績案内">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="プレゼント企画">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --text-color: #333;
-            --bg-color: #f8f9fa;
-        }
-        body {
-            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-color);
-        }
-        header {
-            background-color: var(--primary-color);
-            color: #fff;
-            padding: 2rem 0;
-            text-align: center;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2rem;
-            letter-spacing: 2px;
-        }
-        header p {
-            margin-top: 0.5rem;
-            font-weight: 300;
-        }
-        .container {
-            max-width: 960px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        .services {
-            display: flex;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        .service-card {
-            background: #fff;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            flex: 1;
-        }
-        .service-card h3 {
-            color: var(--secondary-color);
-            margin-top: 0;
-            border-bottom: 2px solid var(--secondary-color);
-            padding-bottom: 0.5rem;
-        }
-        footer {
-            background-color: var(--primary-color);
-            color: #ecf0f1;
-            padding: 3rem 2rem;
-            margin-top: 4rem;
-        }
-        .footer-content {
-            max-width: 960px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
-        .footer-info p {
-            margin: 0.3rem 0;
-            font-size: 0.95rem;
-        }
-        .footer-links {
-            margin-top: 1.5rem;
-        }
-        .footer-links a {
-            color: #bdc3c7;
-            text-decoration: none;
-            margin-right: 1.5rem;
-            font-size: 0.9rem;
-        }
-        .footer-links a:hover {
-            color: #fff;
-            text-decoration: underline;
-        }
-        @media (max-width: 768px) {
-            .services {
-                flex-direction: column;
-            }
-            .footer-content {
-                flex-direction: column;
-                gap: 2rem;
-            }
-        }
-    </style>
-</head>
-<body>
+      /*
+        画像差し替えメモ:
+        - 企画者写真: images/organizer.jpg 推奨 800x800px
+        - 実績確認用画像: images/proof-01.jpg など 推奨 1200x900px または 1080x1350px、20〜40枚程度
+        - QRコード: images/line-qr.jpg 推奨 800x800px
+        - CLS対策としてHTML側に width / height を入れています。実画像に合わせて調整してください。
+      */
 
-    <header>
-        <h1>Luminous Web Studio</h1>
-        <p>ビジネスの課題をデジタルで解決するパートナー</p>
+      :root {
+        --navy-950: #081527;
+        --navy-900: #10233f;
+        --navy-800: #173457;
+        --blue-50: #f4f8fb;
+        --blue-100: #e9f1f7;
+        --gold: #d9a441;
+        --gold-soft: #fff5dc;
+        --line: #06c755;
+        --text: #172235;
+        --muted: #66758a;
+        --white: #ffffff;
+        --border: rgba(16, 35, 63, 0.12);
+        --shadow: 0 24px 70px rgba(8, 21, 39, 0.16);
+        --radius-xl: 30px;
+        --radius-lg: 22px;
+        --radius-md: 14px;
+        --container: 1120px;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        color: var(--text);
+        background: var(--white);
+        font-family: "Noto Sans JP", system-ui, sans-serif;
+        line-height: 1.8;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      body.lightbox-open {
+        overflow: hidden;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button {
+        font: inherit;
+      }
+
+      .container {
+        width: min(calc(100% - 40px), var(--container));
+        margin-inline: auto;
+      }
+
+      .section {
+        padding: 76px 0;
+      }
+
+      .section--soft {
+        background: var(--blue-50);
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 12px;
+        color: var(--gold);
+        font-size: 0.76rem;
+        font-weight: 800;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before {
+        width: 28px;
+        height: 1px;
+        background: currentColor;
+        content: "";
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1,
+      h2,
+      h3 {
+        line-height: 1.45;
+        letter-spacing: 0.02em;
+      }
+
+      h1 {
+        margin-bottom: 18px;
+        color: var(--white);
+        font-size: clamp(2.28rem, 11vw, 4.9rem);
+        font-weight: 800;
+      }
+
+      h2 {
+        margin-bottom: 18px;
+        font-size: clamp(1.75rem, 7vw, 3rem);
+        font-weight: 800;
+      }
+
+      h3 {
+        margin-bottom: 10px;
+        font-size: 1.12rem;
+      }
+
+      p {
+        margin-bottom: 1.4em;
+        color: var(--muted);
+      }
+
+      .lead {
+        font-size: 1.03rem;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 30;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(8, 21, 39, 0.86);
+        color: var(--white);
+        backdrop-filter: blur(16px);
+      }
+
+      .header-inner {
+        display: flex;
+        min-height: 68px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 800;
+        letter-spacing: 0.05em;
+      }
+
+      .hero {
+        position: relative;
+        overflow: hidden;
+        padding: 74px 0 64px;
+        background:
+          radial-gradient(circle at 78% 12%, rgba(217, 164, 65, 0.28), transparent 30%),
+          linear-gradient(145deg, var(--navy-950), var(--navy-800));
+      }
+
+      .hero::after {
+        position: absolute;
+        right: -120px;
+        bottom: -140px;
+        width: 310px;
+        height: 310px;
+        border: 64px solid rgba(255, 255, 255, 0.06);
+        border-radius: 50%;
+        content: "";
+      }
+
+      .hero-grid {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        gap: 34px;
+        align-items: center;
+      }
+
+      .hero-copy {
+        max-width: 700px;
+      }
+
+      .hero-copy p {
+        color: rgba(255, 255, 255, 0.78);
+      }
+
+      .cta-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        min-height: 58px;
+        padding: 14px 24px;
+        border: 0;
+        border-radius: 999px;
+        background: var(--line);
+        color: var(--white);
+        font-weight: 800;
+        box-shadow: 0 18px 42px rgba(6, 199, 85, 0.34);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .cta-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 22px 50px rgba(6, 199, 85, 0.42);
+      }
+
+      .cta-button::before {
+        content: "LINE";
+        padding: 4px 8px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.18);
+        font-size: 0.72rem;
+      }
+
+      .hero-card {
+        overflow: hidden;
+        padding: 22px;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: var(--radius-xl);
+        background: rgba(255, 255, 255, 0.08);
+        box-shadow: var(--shadow);
+      }
+
+      .hero-photo {
+        overflow: hidden;
+        margin: -8px -8px 18px;
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.12);
+        aspect-ratio: 16 / 10;
+      }
+
+      .hero-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
+      }
+
+      .proof-summary {
+        display: grid;
+        gap: 14px;
+      }
+
+      .summary-item {
+        padding: 20px;
+        border-radius: var(--radius-lg);
+        background: rgba(255, 255, 255, 0.92);
+      }
+
+      .summary-item strong {
+        display: block;
+        color: var(--navy-900);
+        font-size: clamp(1.7rem, 8vw, 2.45rem);
+        line-height: 1.2;
+      }
+
+      .summary-item span {
+        color: var(--muted);
+        font-size: 0.82rem;
+        font-weight: 700;
+      }
+
+      .section-heading {
+        max-width: 760px;
+        margin-bottom: 36px;
+      }
+
+      .profile-card {
+        display: grid;
+        gap: 28px;
+        padding: 24px;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-xl);
+        background: var(--white);
+        box-shadow: 0 18px 60px rgba(16, 35, 63, 0.08);
+      }
+
+      .profile-photo {
+        width: 168px;
+        height: 168px;
+        margin: 0 auto;
+        overflow: hidden;
+        border: 8px solid var(--blue-100);
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--blue-100), var(--gold-soft));
+      }
+
+      .profile-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .profile-photo__placeholder {
+        display: grid;
+        width: 100%;
+        height: 100%;
+        place-items: center;
+        color: var(--navy-800);
+        font-weight: 800;
+      }
+
+      .stats-row {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-bottom: 30px;
+      }
+
+      .stats-row--compact {
+        max-width: 760px;
+        margin-inline: auto;
+      }
+
+      .stat-box {
+        padding: 18px 14px;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        background: var(--white);
+        text-align: center;
+      }
+
+      .stat-box strong {
+        display: block;
+        color: var(--navy-900);
+        font-size: clamp(1.55rem, 8vw, 2.4rem);
+        line-height: 1.2;
+      }
+
+      .stat-box span {
+        color: var(--muted);
+        font-size: 0.78rem;
+        font-weight: 700;
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .gallery-empty {
+        display: none;
+        margin-top: 18px;
+        padding: 22px;
+        border: 1px dashed rgba(21, 37, 64, 0.22);
+        border-radius: var(--radius-md);
+        color: var(--muted);
+        background: rgba(255, 255, 255, 0.72);
+      }
+
+      .gallery-empty.is-visible {
+        display: block;
+      }
+
+      .gallery-item {
+        position: relative;
+        overflow: hidden;
+        padding: 0;
+        border: 0;
+        border-radius: 18px;
+        background: var(--blue-100);
+        cursor: zoom-in;
+      }
+
+      .gallery-item:nth-child(3n) {
+        grid-row: span 2;
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: 100%;
+        min-height: 150px;
+        aspect-ratio: 4 / 5;
+        object-fit: cover;
+        transition: transform 0.25s ease;
+      }
+
+      .gallery-item:nth-child(3n) img {
+        aspect-ratio: 4 / 6;
+      }
+
+      .gallery-item:hover img {
+        transform: scale(1.04);
+      }
+
+      .audio-card {
+        display: grid;
+        gap: 18px;
+        padding: 20px;
+        border-radius: var(--radius-lg);
+        background: rgba(255, 255, 255, 0.94);
+      }
+
+      .audio-card--step {
+        margin-top: 16px;
+        margin-left: -42px;
+      }
+
+      .audio-card audio {
+        width: 100%;
+      }
+
+      .audio-note {
+        margin: 0;
+        color: var(--navy-800);
+        font-size: 0.88rem;
+      }
+
+      .line-panel {
+        overflow: hidden;
+        border-radius: var(--radius-xl);
+        background: var(--navy-900);
+        color: var(--white);
+        box-shadow: var(--shadow);
+      }
+
+      .line-panel-inner {
+        display: grid;
+        gap: 26px;
+        padding: 28px;
+      }
+
+      #payment-guide .line-panel-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .line-panel h2,
+      .line-panel p {
+        color: var(--white);
+      }
+
+      .step-list {
+        display: grid;
+        gap: 12px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        counter-reset: steps;
+      }
+
+      .step-list li {
+        position: relative;
+        padding: 16px 16px 16px 58px;
+        border-radius: var(--radius-md);
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .step-list li::before {
+        position: absolute;
+        top: 15px;
+        left: 16px;
+        display: grid;
+        width: 30px;
+        height: 30px;
+        place-items: center;
+        border-radius: 50%;
+        background: var(--gold);
+        color: var(--navy-950);
+        content: counter(steps);
+        counter-increment: steps;
+        font-weight: 800;
+      }
+
+      .qr-card {
+        padding: 18px;
+        border-radius: var(--radius-lg);
+        background: var(--white);
+        color: var(--text);
+        text-align: center;
+      }
+
+      .qr-card--step {
+        margin-top: 16px;
+        margin-left: -42px;
+      }
+
+      .qr-frame {
+        display: grid;
+        width: min(100%, 210px);
+        aspect-ratio: 1;
+        margin: 0 auto 14px;
+        place-items: center;
+        border: 1px dashed rgba(16, 35, 63, 0.25);
+        border-radius: 18px;
+        background: var(--blue-50);
+        color: var(--muted);
+        font-weight: 800;
+      }
+
+      .qr-frame img {
+        width: 100%;
+        height: 100%;
+        border-radius: 18px;
+        object-fit: cover;
+      }
+
+      .footer {
+        padding: 46px 0 26px;
+        background: var(--navy-950);
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .footer-grid {
+        display: grid;
+        gap: 28px;
+      }
+
+      .operator-box {
+        padding: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: var(--radius-lg);
+      }
+
+      .operator-box h2 {
+        color: var(--white);
+        font-size: 1.15rem;
+      }
+
+      .operator-box dl {
+        display: grid;
+        gap: 8px;
+        margin: 0;
+      }
+
+      .operator-box div {
+        display: grid;
+        gap: 2px;
+      }
+
+      .operator-box dt {
+        color: rgba(255, 255, 255, 0.55);
+        font-size: 0.76rem;
+      }
+
+      .operator-box dd {
+        margin: 0;
+      }
+
+      .copyright {
+        margin-top: 28px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        font-size: 0.76rem;
+      }
+
+      .lightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        background: rgba(8, 21, 39, 0.86);
+      }
+
+      .lightbox.is-open {
+        display: flex;
+      }
+
+      .lightbox img {
+        max-height: 82vh;
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow);
+      }
+
+      .lightbox-close {
+        position: fixed;
+        top: 16px;
+        right: 16px;
+        width: 44px;
+        height: 44px;
+        border: 0;
+        border-radius: 50%;
+        background: var(--white);
+        color: var(--navy-950);
+        cursor: pointer;
+        font-size: 1.5rem;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 0.72s ease, transform 0.72s ease;
+      }
+
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (min-width: 760px) {
+        .hero-grid,
+        .profile-card,
+        .line-panel-inner,
+        .footer-grid {
+          grid-template-columns: 1.05fr 0.95fr;
+        }
+
+        .section {
+          padding: 104px 0;
+        }
+
+        .stats-row {
+          grid-template-columns: repeat(4, 1fr);
+        }
+
+        .gallery-grid {
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="#top" aria-label="実績案内トップ">
+          <span>実績案内</span>
+        </a>
+      </div>
     </header>
 
-    <div class="container">
-        <section>
-            <h2 style="text-align: center; margin-bottom: 2rem;">事業内容</h2>
-            <div class="services">
-                <div class="service-card">
-                    <h3>Webサイト制作</h3>
-                    <p>コーポレートサイト、ランディングページ（LP）、オウンドメディアなど、目的に合わせた成果の出るWebサイトを設計・開発いたします。レスポンシブ対応・内部SEO最適化も標準装備です。</p>
-                </div>
-                <div class="service-card">
-                    <h3>デジタルマーケティング支援</h3>
-                    <p>Web広告（Google/Yahoo!/SNS）の運用代行や、SEO対策、コンテンツマーケティングを通じて、貴社の見込み客獲得（リードジェネレーション）を強力にサポートいたします。</p>
-                </div>
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy reveal">
+            <h1>実績LPと入金方法のご案内。</h1>
+            <p class="lead">実績アナウンスを公開し、企画者の想いと運営情報を明確にした、安心して確認いただくための公式ページです。</p>
+          </div>
+          <aside class="hero-card reveal" aria-label="実績案内イメージ">
+            <figure class="hero-photo">
+              <img src="images/hero.jpg" alt="花束を持つ実績案内のイメージ写真" width="645" height="360" loading="eager">
+            </figure>
+            <div class="proof-summary">
+              <div class="summary-item">
+                <strong><span data-countup data-target="1065">0</span>名</strong>
+                <span>実績アナウンス人数</span>
+              </div>
+              <div class="summary-item">
+                <strong><span data-countup data-target="24">0</span>枚</strong>
+                <span>実績画像掲載数</span>
+              </div>
+              <div class="summary-item">
+                <strong>案内</strong>
+                <span>入金方法の説明</span>
+              </div>
             </div>
-        </section>
-    </div>
+          </aside>
+        </div>
+      </section>
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-info">
-                <h3 style="margin-top: 0; margin-bottom: 1rem;">Luminous Web Studio</h3>
-                <p>代表：高橋 遼平</p>
-                <p>所在地：〒150-0002 東京都渋谷区渋谷2-14-13 アーバン渋谷 402号室</p>
-                <p>電話番号：090-2738-4489</p>
-                <p>Email：G4477663355@gmail.com</p>
+      <section class="section">
+        <div class="container">
+          <div class="section-heading reveal">
+            <span class="eyebrow">Organizer</span>
+            <h2>企画者について</h2>
+            <p>顔が見える運営、実績が見える企画であることを大切にしています。</p>
+          </div>
+          <div class="profile-card reveal">
+            <div class="profile-photo" aria-label="企画者写真">
+              <img id="organizerPhoto" src="" alt="企画者ラファエルの画像" width="800" height="800" hidden>
+              <span class="profile-photo__placeholder">PHOTO</span>
             </div>
-            <div class="footer-links">
-                <a href="privacy.html">プライバシーポリシー</a>
-                <a href="law.html">特定商取引法に基づく表記</a>
+            <div>
+              <h3 id="organizerName">ラファエル</h3>
+              <p id="organizerBio">実績アナウンスと入金方法の説明を確認いただくため、公式LINEで案内を行っています。内容を不安なく確認できるよう、実績LPや運営情報を公開しています。</p>
             </div>
+          </div>
         </div>
-        <div style="text-align: center; margin-top: 2rem; font-size: 0.8rem; color: #7f8c8d;">
-            &copy; 2026 Luminous Web Studio. All Rights Reserved.
+      </section>
+
+      <section class="section section--soft">
+        <div class="container">
+          <div class="section-heading reveal">
+            <span class="eyebrow">Proof Gallery</span>
+            <h2>実績ギャラリー</h2>
+            <p>実績アナウンスや確認用画像を一覧で掲載できます。画像をタップすると拡大表示されます。</p>
+          </div>
+          <div class="stats-row stats-row--compact reveal">
+            <div class="stat-box"><strong><span data-countup data-target="1065">0</span>名</strong><span>実績アナウンス人数</span></div>
+            <div class="stat-box"><strong><span data-countup data-target="24">0</span>枚</strong><span>実績画像掲載数</span></div>
+          </div>
+          <div id="gallery" class="gallery-grid reveal" aria-label="実績確認用画像一覧"></div>
+          <p id="galleryEmpty" class="gallery-empty">実績画像はまだ配置されていません。images/proof-01.jpg から連番で画像を追加すると、この場所に自動表示されます。</p>
         </div>
+      </section>
+
+      <section class="section section--soft" id="payment-guide">
+        <div class="container">
+          <div class="line-panel reveal">
+            <div class="line-panel-inner">
+              <div>
+                <span class="eyebrow">Payment Guide</span>
+                <h2>入金方法の説明</h2>
+                <p>入金方法はこちらのボイスメモを聞いてください。聞き終えたら、下記の公式LINEへご連絡ください。</p>
+                <ol class="step-list">
+                  <li>
+                    入金方法はこちらのボイスメモを聞いてください
+                    <div class="audio-card audio-card--step">
+                      <audio controls preload="metadata">
+                        <source src="audio/nyukin-setsumei-2026.ogg" type="audio/ogg; codecs=opus">
+                        お使いのブラウザは音声再生に対応していません。
+                      </audio>
+                    </div>
+                  </li>
+                  <li>
+                    聞き終えたらこちらのLINEにご連絡ください
+                    <div class="qr-card qr-card--step">
+                      <div class="qr-frame" id="paymentQrFrame">QR画像</div>
+                      <a class="cta-button js-payment-line-link" href="#">ここをタップ</a>
+                    </div>
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--soft" id="line">
+        <div class="container">
+          <div class="line-panel reveal">
+            <div class="line-panel-inner">
+              <div>
+                <span class="eyebrow">Official LINE</span>
+                <h2>公式LINEで実績人数を確認できます</h2>
+                <p>ご案内している公式LINEは入金された方が属しており、毎日入金された方がアナウンスされるグループになります。</p>
+                <ol class="step-list">
+                  <li>公式LINEを追加</li>
+                  <li>入金人数を確認</li>
+                </ol>
+              </div>
+              <div class="qr-card">
+                <div class="qr-frame" id="qrFrame">QR画像</div>
+                <a class="cta-button js-line-link" href="#">ここをタップ</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-grid">
+        <div>
+          <a class="brand" href="#top">
+            <span>実績案内</span>
+          </a>
+          <p>このページは実績LP、入金方法の案内、運営者情報をわかりやすく伝えるための公式LPです。</p>
+        </div>
+        <section class="operator-box" aria-labelledby="operatorTitle">
+          <h2 id="operatorTitle">運営者情報・特定商取引法に基づく表記</h2>
+          <dl>
+            <div><dt>運営者</dt><dd>株式会社 AEGIS GROUP</dd></div>
+            <div><dt>所在地</dt><dd>東京都渋谷区千駄ヶ谷5-27-5 Link Square Shinjuku</dd></div>
+            <div><dt>連絡先</dt><dd><a href="/cdn-cgi/l/email-protection#cab8bfa7abf3fb8aa5bea5a4abe4bfa1"><span class="__cf_email__" data-cfemail="ddafa8b0bce4ec9db2a9b2b3bcf3a8b6">[email&#160;protected]</span></a></dd></div>
+            <div><dt>案内内容</dt><dd>実績LP・入金方法のご案内</dd></div>
+          </dl>
+        </section>
+      </div>
+      <div class="container copyright">© <span id="year"></span> 実績案内. All Rights Reserved.</div>
     </footer>
 
+    <div class="lightbox" id="lightbox" aria-modal="true" role="dialog" aria-label="実績画像の拡大表示">
+      <button class="lightbox-close" type="button" aria-label="閉じる">×</button>
+      <img id="lightboxImage" src="" alt="">
+    </div>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+      const LP_CONFIG = {
+        lineUrl: "https://lin.ee/SmUhsWY",
+        paymentLineUrl: "https://lin.ee/SmUhsWY",
+        organizerName: "ラファエル",
+        organizerBio:
+          "実績アナウンスと入金方法の説明を確認いただくため、公式LINEで案内を行っています。内容を不安なく確認できるよう、実績LPや運営情報を公開しています。",
+        organizerPhoto: "images/organizer.jpg",
+        qrImage: "images/line-qr.jpg",
+        paymentQrImage: "images/payment-window-qr.png",
+        galleryCount: 24,
+        galleryPath: "images/proof-",
+        galleryExtension: ".jpg",
+        galleryAltPrefix: "実績確認用画像",
+        assetVersion: "20260619-1",
+      };
+
+      const withAssetVersion = (src) => `${src}?v=${LP_CONFIG.assetVersion}`;
+
+      document.querySelectorAll(".js-line-link").forEach((link) => {
+        link.href = LP_CONFIG.lineUrl;
+        link.target = "_blank";
+        link.rel = "noopener";
+      });
+
+      document.querySelectorAll(".js-payment-line-link").forEach((link) => {
+        link.href = LP_CONFIG.paymentLineUrl;
+        link.target = "_blank";
+        link.rel = "noopener";
+      });
+
+      document.querySelector("#organizerName").textContent = LP_CONFIG.organizerName;
+      document.querySelector("#organizerBio").textContent = LP_CONFIG.organizerBio;
+
+      const organizerPhoto = document.querySelector("#organizerPhoto");
+      if (LP_CONFIG.organizerPhoto) {
+        organizerPhoto.src = withAssetVersion(LP_CONFIG.organizerPhoto);
+        organizerPhoto.hidden = false;
+        document.querySelector(".profile-photo__placeholder").hidden = true;
+      }
+
+      const renderQrImage = (selector, src) => {
+        const qrFrame = document.querySelector(selector);
+        if (!qrFrame || !src) return;
+        qrFrame.innerHTML = `<img src="${withAssetVersion(src)}" alt="公式LINE登録用QRコード" width="800" height="800" loading="lazy">`;
+      };
+
+      renderQrImage("#qrFrame", LP_CONFIG.qrImage);
+      renderQrImage("#paymentQrFrame", LP_CONFIG.paymentQrImage);
+
+      const gallery = document.querySelector("#gallery");
+      const galleryEmpty = document.querySelector("#galleryEmpty");
+      const pad = (num) => String(num).padStart(2, "0");
+      const updateGalleryEmptyState = () => {
+        const visibleItems = gallery.querySelectorAll(".gallery-item:not([hidden])").length;
+        galleryEmpty.classList.toggle("is-visible", visibleItems === 0);
+      };
+
+      for (let index = 1; index <= LP_CONFIG.galleryCount; index += 1) {
+        const src = withAssetVersion(`${LP_CONFIG.galleryPath}${pad(index)}${LP_CONFIG.galleryExtension}`);
+        const button = document.createElement("button");
+        button.className = "gallery-item";
+        button.type = "button";
+        button.innerHTML = `
+          <img
+            src="${src}"
+            alt="${LP_CONFIG.galleryAltPrefix} ${index}"
+            width="1200"
+            height="${index % 3 === 0 ? 1600 : 900}"
+            loading="lazy"
+            onerror="this.closest('.gallery-item').hidden=true; window.dispatchEvent(new Event('gallery-image-error'))"
+          >
+        `;
+        gallery.appendChild(button);
+      }
+
+      window.addEventListener("gallery-image-error", updateGalleryEmptyState);
+      updateGalleryEmptyState();
+
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.16 }
+      );
+
+      document.querySelectorAll(".reveal").forEach((element) => revealObserver.observe(element));
+
+      const countObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            const target = Number(entry.target.dataset.target);
+            const duration = 1100;
+            const started = performance.now();
+            const step = (now) => {
+              const progress = Math.min((now - started) / duration, 1);
+              const eased = 1 - Math.pow(1 - progress, 3);
+              entry.target.textContent = Math.floor(target * eased).toLocaleString("ja-JP");
+              if (progress < 1) requestAnimationFrame(step);
+            };
+            requestAnimationFrame(step);
+            countObserver.unobserve(entry.target);
+          });
+        },
+        { threshold: 0.5 }
+      );
+
+      document.querySelectorAll("[data-countup]").forEach((element) => countObserver.observe(element));
+
+      const lightbox = document.querySelector("#lightbox");
+      const lightboxImage = document.querySelector("#lightboxImage");
+
+      gallery.addEventListener("click", (event) => {
+        const img = event.target.closest(".gallery-item")?.querySelector("img");
+        if (!img) return;
+        lightboxImage.src = img.src;
+        lightboxImage.alt = img.alt;
+        lightbox.classList.add("is-open");
+        document.body.classList.add("lightbox-open");
+      });
+
+      const closeLightbox = () => {
+        lightbox.classList.remove("is-open");
+        document.body.classList.remove("lightbox-open");
+        lightboxImage.src = "";
+      };
+
+      document.querySelector(".lightbox-close").addEventListener("click", closeLightbox);
+      lightbox.addEventListener("click", (event) => {
+        if (event.target === lightbox) closeLightbox();
+      });
+      window.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeLightbox();
+      });
+
+      document.querySelector("#year").textContent = new Date().getFullYear();
+    </script>
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"2ee845fb19fc4eae90066776aafdba49","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
